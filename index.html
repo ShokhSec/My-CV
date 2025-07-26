@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shohruh Axrorov - CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark {
+            background: #1f2937;
+            color: #f3f4f6;
+        }
+        .light {
+            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+            color: #111827;
+        }
+        .lang-switcher button {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .dark .lang-switcher button {
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+        .light .lang-switcher button {
+            border-color: #e5e7eb;
+            color: #374151;
+        }
+        .lang-switcher button:hover {
+            background-color: #1e40af;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .lang-switcher button.active {
+            background-color: #1e40af;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .dark .nav-link:hover {
+            color: #60a5fa;
+        }
+        .light .nav-link:hover {
+            color: #1e40af;
+        }
+        .section-card {
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark .section-card {
+            background: #374151;
+            color: #f3f4f6;
+        }
+        .light .section-card {
+            background: #fff;
+            color: #111827;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .certificate-card img {
+            transition: transform 0.3s ease;
+        }
+        .certificate-card:hover img {
+            transform: scale(1.05);
+        }
+        .profile-img {
+            object-fit: cover;
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .dark .social-icon:hover {
+            color: #60a5fa;
+        }
+        .light .social-icon:hover {
+            color: #1e40af;
+        }
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        .dark .theme-toggle {
+            background: #4b5563;
+        }
+        .light .theme-toggle {
+            background: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col light">
+    <header class="py-6">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Shohruh Axrorov</h1>
+            <div class="flex items-center space-x-3 mt-4 md:mt-0">
+                <div class="lang-switcher flex space-x-3">
+                    <button onclick="switchLanguage('en')" class="lang-btn" data-lang="en">English</button>
+                    <button onclick="switchLanguage('uz')" class="lang-btn" data-lang="uz">O‘zbek</button>
+                    <button onclick="switchLanguage('ru')" class="lang-btn" data-lang="ru">Русский</button>
+                </div>
+                <button onclick="toggleTheme()" class="theme-toggle">
+                    <svg id="theme-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="py-4 sticky top-0 shadow-lg z-10">
+        <div class="container mx-auto px-4">
+            <ul class="flex flex-wrap space-x-4 md:space-x-8 justify-center">
+                <li><a href="#about" class="nav-link text-lg font-medium" data-key="nav.about">About</a></li>
+                <li><a href="#skills" class="nav-link text-lg font-medium" data-key="nav.skills">Skills</a></li>
+                <li><a href="#projects" class="nav-link text-lg font-medium" data-key="nav.projects">Projects</a></li>
+                <li><a href="#certificates" class="nav-link text-lg font-medium" data-key="nav.certificates">Certificates</a></li>
+                <li><a href="#contact" class="nav-link text-lg font-medium" data-key="nav.contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        <section class="flex flex-col md:flex-row items-center mt-8 section-card">
+            <img src="images/photo_2025-07-26_13-34-50.jpg" alt="Shohruh" class="w-48 h-48 rounded-lg shadow-xl profile-img" />
+            <div class="md:ml-8 mt-6 md:mt-0">
+                <h2 class="text-2xl md:text-3xl font-bold" data-key="intro.title">Cybersecurity & Flutter Developer</h2>
+                <p class="mt-3 text-lg" data-key="intro.welcome"></p>
+            </div>
+        </section>
+
+        <section id="about" class="mt-12 section-card">
+            <h2 class="text-2xl md:text-3xl font-bold border-b-2 pb-3 mb-6" data-key="section.about">About Me</h2>
+            <p class="text-lg" data-key="about.text"></p>
+        </section>
+
+        <section id="skills" class="mt-12 section-card">
+            <h2 class="text-2xl md:text-3xl font-bold border-b-2 pb-3 mb-6" data-key="section.skills">Skills</h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <li class="flex items-center space-x-2" data-key="skills.flutter"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-center space-x-2" data-key="skills.github"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-center space-x-2" data-key="skills.python"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-center space-x-2" data-key="skills.tools"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-center space-x-2" data-key="skills.ctf"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-center space-x-2" data-key="skills.pentesting"><span class="text-blue-600">•</span><span></span></li>
+            </ul>
+        </section>
+
+        <section id="projects" class="mt-12 section-card">
+            <h2 class="text-2xl md:text-3xl font-bold border-b-2 pb-3 mb-6" data-key="section.projects">Projects & Experience</h2>
+            <ul class="space-y-4">
+                <li class="flex items-start space-x-2" data-key="projects.haady"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-start space-x-2" data-key="projects.htb"><span class="text-blue-600">•</span><span></span></li>
+                <li class="flex items-start space-x-2" data-key="projects.windows"><span class="text-blue-600">•</span><span></span></li>
+            </ul>
+        </section>
+
+        <section id="certificates" class="mt-12 section-card">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-gray-700 pb-3 mb-6" data-key="section.certificates">Certificates</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <figure class="certificate-card text-center">
+                    <a href="images/ISC2 CC Certificate-page-001.jpg" target="_blank">
+                        <img src="images/ISC2 CC Certificate-page-001.jpg" alt="ISC2" class="rounded-lg shadow-md" />
+                    </a>
+                    <figcaption class="mt-3 text-sm font-medium text-gray-400" data-key="certificates.isc2">ISC2 Certified in Cybersecurity</figcaption>
+                </figure>
+                <figure class="certificate-card text-center">
+                    <a href="images/Cisco ethical hasker-page-001.jpg" target="_blank">
+                        <img src="images/Cisco ethical hasker-page-001.jpg" alt="Cisco" class="rounded-lg shadow-md" />
+                    </a>
+                    <figcaption class="mt-3 text-sm font-medium text-gray-400" data-key="certificates.cisco">Cisco Ethical Hacker Certificate</figcaption>
+                </figure>
+                <figure class="certificate-card text-center">
+                    <a href="images/Axrorov Shohrux_certificate.jpg" target="_blank">
+                        <img src="images/Axrorov Shohrux_certificate.jpg" alt="HAAD Red 0" class="rounded-lg shadow-md" />
+                    </a>
+                    <figcaption class="mt-3 text-sm font-medium text-gray-400" data-key="certificates.haad0">HAAD Red 0 Certification</figcaption>
+                </figure>
+                <figure class="certificate-card text-center">
+                    <a href="images/Axrorov Shohrux_certificate-page-001.jpg" target="_blank">
+                        <img src="images/Axrorov Shohrux_certificate-page-001.jpg" alt="HAAD Red 1" class="rounded-lg shadow-md" />
+                    </a>
+                    <figcaption class="mt-3 text-sm font-medium text-gray-400" data-key="certificates.haad1">HAAD Red 1 Certification</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="contact" class="mt-12 section-card">
+            <h2 class="text-2xl md:text-3xl font-bold border-b-2 pb-3 mb-6" data-key="section.contact">Contact</h2>
+            <div class="space-y-4">
+                <p class="flex items-center space-x-2">
+                    <svg class="w-6 h-6 social-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.083-.729.083-.729 1.205.085 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.419-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.932 0-1.31.467-2.381 1.236-3.221-.124-.304-.536-1.527.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.649.243 2.872.119 3.176 1.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.373.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub: <a href="https://github.com/ShokhSec" class="text-blue-600 hover:underline">ShokhSec</a></span>
+                </p>
+                <p class="flex items-center space-x-2">
+                    <svg class="w-6 h-6 social-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>Email: <a href="mailto:axrorovshohrux05@gmail.com" class="text-blue-600 hover:underline">axrorovshohrux05@gmail.com</a></span>
+                </p>
+                <p class="flex items-center space-x-2">
+                    <svg class="w-6 h-6 social-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.85-3.037-1.852 0-2.136 1.447-2.136 2.941v5.665H9.352V9.747h3.415v1.516h.048c.476-.9 1.637-1.85 3.365-1.85 3.602 0 4.267 2.37 4.267 5.455v6.584zM5.337 8.23c-1.144 0-2.064-.928-2.064-2.064 0-1.135.92-2.064 2.064-2.064 1.135 0 2.064.929 2.064 2.064 0 1.136-.929 2.064-2.064 2.064zm1.782 12.222H3.555V9.747h3.564v10.705zM22.225 0H1.771C.792 0 0 .792 0 1.771v20.452C0 23.208.792 24 1.771 24h20.452c.979 0 1.771-.792 1.771-1.771V1.771C24 .792 23.208 0 22.225 0z"/></svg>
+                    <span>Telegram: <a href="https://t.me/shokhruk1" class="text-blue-600 hover:underline">@shokhruk1</a></span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p data-key="footer.copyright">&copy; 2025 Shohruh Axrorov. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://github.com/ShokhSec" class="social-icon">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.083-.729.083-.729 1.205.085 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.419-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.932 0-1.31.467-2.381 1.236-3.221-.124-.304-.536-1.527.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.649.243 2.872.119 3.176 1.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.373.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://t.me/shokhruk1" class="social-icon">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0zm4.441 17.174c-.316.473-.79.632-1.263.474l-1.896-.632c-1.264-.421-5.053-2.106-7.159-3.158-.632-.316-.79-.948-.316-1.422l1.264-1.264 4.738 4.738c.316.316.79.316 1.106 0l2.211-2.211 4.738 4.738c.316.316.316.79 0 1.106zm-9.474-6.316l3.158 3.158 2.211-2.211c.316-.316.79-.316 1.106 0l4.738 4.738c.316.316.316.79 0 1.106l-1.264 1.264c-.316.316-.79.316-1.106 0l-4.738-4.738-3.158 3.158c-.316.316-.79.316-1.106 0l-1.264-1.264c-.316-.316-.316-.79 0-1.106l4.738-4.738c.316-.316.79-.316 1.106 0z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                "nav.about": "About",
+                "nav.skills": "Skills",
+                "nav.projects": "Projects",
+                "nav.certificates": "Certificates",
+                "nav.contact": "Contact",
+                "section.about": "About Me",
+                "section.skills": "Skills",
+                "section.projects": "Projects & Experience",
+                "section.certificates": "Certificates",
+                "section.contact": "Contact",
+                "intro.title": "Cybersecurity & Flutter Developer",
+                "intro.welcome": "Welcome to my personal CV website!",
+                "about.text": "I'm a 17-year-old passionate ethical hacker with 1 year of experience in penetration testing. I specialize in finding vulnerabilities, building attack/defense scenarios, and contributing to cybersecurity tools. Dedicated, fast-learning, and always pushing boundaries in the tech world.",
+                "skills.flutter": "Flutter Developer – building cross-platform apps",
+                "skills.github": "GitHub Profile Contributor",
+                "skills.python": "Python, Bash scripting",
+                "skills.tools": "Metasploit Framework, Burp Suite, Nmap",
+                "skills.ctf": "CTF development, Vulnerability scanning",
+                "skills.pentesting": "Pentesting & Red Teaming labs",
+                "projects.haady": "Worked on HAADY – AI-based malware assistant (as team member)",
+                "projects.htb": "Hack The Box – CTF and red team labs (HTB)",
+                "projects.windows": "Custom-built Windows escalation scenarios & AD lab testing",
+                "certificates.isc2": "ISC2 Certified in Cybersecurity",
+                "certificates.cisco": "Cisco Ethical Hacker Certificate",
+                "certificates.haad0": "HAAD Red 0 Certification",
+                "certificates.haad1": "HAAD Red 1 Certification",
+                "footer.copyright": "&copy; 2025 Shohruh Axrorov. All rights reserved."
+            },
+            uz: {
+                "nav.about": "Men haqimda",
+                "nav.skills": "Ko‘nikmalar",
+                "nav.projects": "Loyihalar",
+                "nav.certificates": "Sertifikatlar",
+                "nav.contact": "Aloqa",
+                "section.about": "Men haqimda",
+                "section.skills": "Ko‘nikmalar",
+                "section.projects": "Loyihalar va tajriba",
+                "section.certificates": "Sertifikatlar",
+                "section.contact": "Aloqa",
+                "intro.title": "Kiberxavfsizlik va Flutter dasturchisi",
+                "intro.welcome": "Shaxsiy CV veb-saytimga xush kelibsiz!",
+                "about.text": "Men 17 yoshli, kiberxavfsizlik sohasida 1 yillik tajribaga ega bo‘lgan ishtiyoqli etik xakeriman. Men zaifliklarni topish, hujum/himoya stsenariylarini yaratish va kiberxavfsizlik vositalariga hissa qo‘shishga ixtisoslashganman. Fidoyi, tez o‘rganuvchi va texnologiya sohasida doimo chegaralarni kengaytiraman.",
+                "skills.flutter": "Flutter dasturchisi – platformalararo ilovalar yaratish",
+                "skills.github": "GitHub profiliga hissa qo‘shuvchi",
+                "skills.python": "Python, Bash skriptlari",
+                "skills.tools": "Metasploit Framework, Burp Suite, Nmap",
+                "skills.ctf": "CTF ishlab chiqish, zaifliklarni skanerlash",
+                "skills.pentesting": "Pentesting va Red Teaming laboratoriyalari",
+                "projects.haady": "HAADY loyihasida ishladim – AI asosidagi zararli dastur yordamchisi (jamoa a’zosi sifatida)",
+                "projects.htb": "Hack The Box – CTF va red team laboratoriyalari (HTB)",
+                "projects.windows": "Windows uchun maxsus eskalatsiya stsenariylari va AD laboratoriya sinovlari",
+                "certificates.isc2": "ISC2 Kiberxavfsizlik sertifikati",
+                "certificates.cisco": "Cisco Etik Xaker sertifikati",
+                "certificates.haad0": "HAAD Red 0 sertifikati",
+                "certificates.haad1": "HAAD Red 1 sertifikati",
+                "footer.copyright": "&copy; 2025 Shohruh Axrorov. Barcha huquqlar himoyalangan."
+            },
+            ru: {
+                "nav.about": "Обо мне",
+                "nav.skills": "Навыки",
+                "nav.projects": "Проекты",
+                "nav.certificates": "Сертификаты",
+                "nav.contact": "Контакты",
+                "section.about": "Обо мне",
+                "section.skills": "Навыки",
+                "section.projects": "Проекты и опыт",
+                "section.certificates": "Сертификаты",
+                "section.contact": "Контакты",
+                "intro.title": "Кибербезопасность и разработчик Flutter",
+                "intro.welcome": "Добро пожаловать на мой персональный сайт-резюме!",
+                "about.text": "Мне 17 лет, я увлеченный этический хакер с 1 годом опыта в тестировании на проникновение. Специализируюсь на поиске уязвимостей, создании сценариев атаки/защиты и внесении вклада в инструменты кибербезопасности. Целеустремленный, быстро обучаюсь и всегда раздвигаю границы в мире технологий.",
+                "skills.flutter": "Разработчик Flutter – создание кроссплатформенных приложений",
+                "skills.github": "Контрибьютор профиля GitHub",
+                "skills.python": "Python, Bash-скрипты",
+                "skills.tools": "Metasploit Framework, Burp Suite, Nmap",
+                "skills.ctf": "Разработка CTF, сканирование уязвимостей",
+                "skills.pentesting": "Пентестинг и лаборатории Red Teaming",
+                "projects.haady": "Работал над HAADY – помощник на основе ИИ для анализа вредоносного ПО (в составе команды)",
+                "projects.htb": "Hack The Box – CTF и лаборатории red team (HTB)",
+                "projects.windows": "Создание сценариев эскалации привилегий в Windows и тестирование лабораторий AD",
+                "certificates.isc2": "Сертификат ISC2 по кибербезопасности",
+                "certificates.cisco": "Сертификат Cisco Ethical Hacker",
+                "certificates.haad0": "Сертификат HAAD Red 0",
+                "certificates.haad1": "Сертификат HAAD Red 1",
+                "footer.copyright": "&copy; 2025 Шохрух Ахроров. Все права защищены."
+            }
+        };
+
+        function switchLanguage(lang) {
+            localStorage.setItem('language', lang);
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark');
+            body.classList.toggle('dark', !isDark);
+            body.classList.toggle('light', isDark);
+            const icon = document.getElementById('theme-icon');
+            icon.innerHTML = isDark ? 
+                '<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>' :
+                '<path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'uz';
+            switchLanguage(savedLang);
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.add(savedTheme);
+            if (savedTheme === 'dark') {
+                document.getElementById('theme-icon').innerHTML = '<path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
+            }
+        });
+    </script>
+</body>
+</html>
